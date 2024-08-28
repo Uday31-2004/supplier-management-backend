@@ -22,6 +22,7 @@ exports.getSupplierById = async (req, res) => {
   try {
     const supplier = await Supplier.findById(req.params.id);
     if (!supplier) {
+      console.log(`Supplier with ID ${req.params.id} not found`);
       return res.status(404).json({ error: 'Supplier not found' });
     }
     res.json(supplier);
