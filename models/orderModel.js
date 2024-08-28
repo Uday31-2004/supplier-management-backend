@@ -1,11 +1,26 @@
+// models/Order.js
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  supplierId: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier', required: true },
-  items: [{ name: String, quantity: Number }],
-  status: { type: String, default: 'Pending' },
-  expectedDeliveryDate: { type: Date },
-  createdAt: { type: Date, default: Date.now },
-});
+    supplierId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Supplier',
+        required: true,
+    },
+    items: {
+        name: { type: String, required: true },
+        quantity: { type: Number, required: true },
+    },
+    addressFrom: {
+        type: String,
+        required: true,
+    },
+    addressTo: {
+        type: String,
+        required: true,
+    },
+}, { timestamps: true });
 
-module.exports = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
