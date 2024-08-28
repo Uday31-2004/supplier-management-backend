@@ -7,7 +7,7 @@ const deliveryRoutes = require('./routes/deliveryRoutes');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Replace with your frontend URL
+  origin: 'https://supplier-management-frontend.vercel.app', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 };
