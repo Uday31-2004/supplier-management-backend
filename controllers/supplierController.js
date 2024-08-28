@@ -18,3 +18,14 @@ exports.getSuppliers = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+exports.getSupplierById = async (req, res) => {
+  try {
+    const supplier = await Supplier.findById(req.params.id);
+    if (!supplier) {
+      return res.status(404).json({ error: 'Supplier not found' });
+    }
+    res.json(supplier);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
